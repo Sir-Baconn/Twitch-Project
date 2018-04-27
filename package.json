@@ -1,0 +1,16 @@
+{
+  "name": "twitch-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "./app",
+    "start": "node ./app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sir-Baconn/Twitch-Project.git"
+  },
+  "author": "Steven Mattia",
+  "license": "MIT"
+}
