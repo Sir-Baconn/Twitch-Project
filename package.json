@@ -27,7 +27,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
-    "ejs": "^2.5.8",
+    "ejs": "^2.5.9",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "google-auth-library": "^1.4.0",
