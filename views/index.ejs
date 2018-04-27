@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Twitch Social</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="shortcut icon" href="../imgs/favicon.ico" type="image/x-icon"> -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script defer src="/js/fontawesome-all.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css" />
+    <script src="/js/main.js"></script>
+</head>
+<body>
+    <div class="top">
+        <div class="pageHeader">
+            <h2 style="display: inline-block"><a href="/streamers">Twitch Social</a></h2>
+            <!-- <img style="display: inline-block;" src="../imgs/logo_temp.png" alt="" width="75px" height="75px"> -->
+        </div>
+    </div>
+    <div class="main">
+        <div class="search">
+            <form>
+                <div class="group">      
+                    <input type="text" id="searchInput" onkeyup="filterStreamers()" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Search streamers</label>
+                </div>
+            </form>
+        </div>
+        <hr>
+        <div class="streamersGrid">
+            <% for(var i = 0; i < followers.length; i++){ %>
+                <div class="item">
+                    <!--<a href="https://www.twitch.tv/<%= followers[i].login %>" target="_blank"><img src="<%= followers[i].profile_image_url %>" alt=""></a>-->
+                    <form class="form" method="POST" action="home"><img src="<%= followers[i].profile_image_url %>" alt=""><input style="display: none;" type="text" id="username" name="username" value="<%= followers[i].display_name %>"></form>
+                    <div class="streamerInfo">
+                        <% if(followers[i].stream_status){ %>
+                            <i class="fas fa-circle" title="Live!"></i>
+                        <% } %>
+                        <h6><%= followers[i].display_name %></h6>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footerContent">
+            <p><small>&copy; Twitch Social all rights reserved.</small></p>
+        </div>
+    </div>
+    <script src="/js/social_media.js"></script>
+</body>
+</html>

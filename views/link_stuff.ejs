@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Twitch Social</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="shortcut icon" href="../imgs/favicon.ico" type="image/x-icon"> -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script defer src="/js/fontawesome-all.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/link_stuff.css" />
+</head>
+<body>
+    <div class="top">
+        <div class="pageHeader">
+            <h2 style="display: inline-block"><a href="">Twitch Social</a></h2>
+        </div>
+    </div>
+    <div class="main">
+        <div class="item">
+            <div class="itemHeader">
+                <h3>Please link your social media accounts</h3>
+            </div>
+            <div class="linkStuff">
+                <div class="youtubeLink">
+                    <h5 class="btnLabel youtubeLabel">YouTube:</h5>
+                    <button id="youtubeBtn" class="btn btn-primary" type=""><a href="/link_stuff/youtube">Link YouTube</a></button>
+                </div>
+                <div class="twitterLink">
+                    <h5 class="btnLabel twitterLabel">Twitter:</h5>
+                    <button id="twitterBtn" class="btn btn-primary" type=""><a href="/link_stuff/twitter">Link Twitter</a></button>
+                </div>
+            </div>
+            <div class="itemHeader">
+                <h3>Please provide the link to your subreddit if you have one for your stream (only provide the name, not the whole reddit URL).</h3>
+            </div>
+            <div class="redditStuff">
+                <input id="subredditInput" type="text" class="form-control" name="subreddit" placeholder="subreddit">
+                <input id="subredditBtn" class="float-right btn btn-primary" type="submit">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footerContent">
+            <p><small>&copy; Twitch Social all rights reserved.</small></p>
+        </div>
+    </div>
+</body>
+</html>

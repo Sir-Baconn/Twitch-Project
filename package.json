@@ -1,7 +1,7 @@
 {
-  "name": "twitch-project",
+  "name": "twitch-social",
   "version": "1.0.0",
-  "description": "",
+  "description": "Place for twitch users and streamers to be more interactive.",
   "main": "app.js",
   "scripts": {
     "test": "./app",
@@ -11,6 +11,31 @@
     "type": "git",
     "url": "git+https://github.com/Sir-Baconn/Twitch-Project.git"
   },
-  "author": "Steven Mattia",
-  "license": "MIT"
+  "keywords": [
+    "twitch",
+    "twitch.tv",
+    "twitchtv"
+  ],
+  "author": "Steve, Jon, Scott",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sir-Baconn/Twitch-Project/issues"
+  },
+  "homepage": "https://github.com/Sir-Baconn/Twitch-Project#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "ejs": "^2.5.8",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "google-auth-library": "^1.4.0",
+    "googleapis": "^29.0.0",
+    "mysql": "^2.15.0",
+    "request": "^2.85.0",
+    "snoowrap": "^1.15.2",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {}
 }

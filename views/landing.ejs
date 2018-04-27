@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Twitch Social</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="shortcut icon" href="../imgs/favicon.ico" type="image/x-icon"> -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script defer src="/js/fontawesome-all.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/landing_style.css" />
+    <script src="../js/main.js"></script>
+</head>
+<body>
+    <div class="top">
+        <div class="pageHeader">
+            <h2 style="display: inline-block"><a href="">Twitch Social</a></h2>
+            <!-- <img style="display: inline-block;" src="../imgs/logo_temp.png" alt="" width="75px" height="75px"> -->
+        </div>
+    </div>
+    <div class="main">
+        <div class="item">
+            <div class="itemHeader">
+                <h2>What is Twitch Social?</h2>
+                <p>Twitch Social allows you to view and follow your favorite streamers' social media and stay connected with your favorite streamers even when they are offline.</p>
+                <span><em>All in one location.</em></span>
+            </div>
+            <div class="itemInnerContent youtubeIcon">
+                <div class="mediaIcon" style="color:red"><i class="fab fa-youtube fa-3x"></i></div>
+                <div class="innerContentDescription">
+                    <span><strong>Watch the latest <span style="color:red">videos</span> </strong></span>
+                    <span>from your favorite streamer's <span style="color:red"><a href="https://www.youtube.com" target="_blank">YouTube</a></span>.</span>
+                </div>
+            </div>
+            <div class="itemInnerContent twitterIcon">
+                <div class="mediaIcon" style="color:#1da1f2"><i class="fab fa-twitter fa-3x"></i></div>
+                <div class="innerContentDescription">
+                    <span><strong>View the latest <span style="color:#1da1f2">tweets</span> </strong></span>
+                    <span>from your favorite streamer's <span style="color:#1da1f2"><a href="https://www.twitter.com" target="_blank">Twitter</a></span>.</span>
+                </div>
+            </div>
+            <div class="itemInnerContent twitchIcon">
+                <div class="mediaIcon" style="color:#6441a4"><i class="fab fa-twitch fa-3x"></i></div>
+                <div class="innerContentDescription">
+                    <span><strong>View the latest <span style="color:#6441a4">clips</span> </strong></span>
+                    <span>from your favorite streamer's <span style="color:#6441a4"><a href="https://clips.twitch.tv" target="_blank">Clips</a></span>.</span>
+                </div>
+            </div>
+            <div class="itemInnerContent redditIcon">
+                <div class="mediaIcon"><i class="fab fa-reddit-alien fa-3x"></i></div>
+                <div class="innerContentDescription">
+                    <span><strong>View the latest <span style="color: #ff4500">posts</span> </strong></span>
+                    <span>from your favorite streamer's <span style="color: #ff4500"><a href="https://www.reddit.com/subreddits/" target="_blank">subreddit</a></span>.</span>
+                </div>
+            </div>
+            <div class="itemInnerContent calendarIcon">
+                <div class="mediaIcon" style="color:#4263eb"><i class="far fa-calendar-alt fa-3x"></i></div>
+                <div class="innerContentDescription">
+                    <span><strong>Preview upcoming stream <span style="color: #4263eb">content</span> </strong></span>
+                    <span>with our <span style="color: #4263eb"><a href="scheduler" target="_blank">Scheduler</a></span>.</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="itemHeader">
+                <h2>Sign Up</h2>
+                <p>All we need is for you to create an account to get started.</p>
+                <p>This will then take you to the Twitch account link page and allow us to get all the information about your favorite streamers fast an easy.</p>
+            </div>
+            <div class="itemInnerContent rightContent">
+                <form method="POST"  action="/streamers">
+                    <div class="form-group">
+                        <label for="username">Your username</label>
+                        <div class="input-group">
+                            <div class="input-group-addon" style="color:#6441a4"><i class="fal fa-user fa-lg"></i></div>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" aria-describedby="usernameHelp" required oninvalid="this.setCustomValidity('Please fill out this field before continuing.')"  oninput="setCustomValidity('')">
+                        </div>
+                        <small id="usernameHelp" class="form-text text-muted">Used to identify with medias.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Your password</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fal fa-key fa-lg"></i></div>
+                            <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" placeholder="Password" required oninvalid="this.setCustomValidity('Please fill out this field before continuing.')"  oninput="setCustomValidity('')">
+                        </div>
+                        <small id="passwordHelp" class="form-text text-muted">Your password is safe!</small>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" required>
+                        I agree to the Twitch Social Terms &amp; Conditions
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="signup" id="signup" value="1">Link My Twitch</button>
+                </form>
+                <p>Already have an account? <a href="login">Log in</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footerContent">
+            <p><small>&copy; Twitch Social all rights reserved.</small></p>
+        </div>
+    </div>
+</body>
+</html>

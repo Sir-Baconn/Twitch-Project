@@ -1,0 +1,132 @@
+:root{
+    --purple: #392e5c;
+    --darker_purple: #2e244e;
+    --darker_darker_purple: #251c41;
+}
+
+body{
+    /* margin: 8px; */
+    margin: 0;
+    /* font-family: Helvetica Neue,Helvetica,Arial,sans-serif!important; */
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.5;
+    background-color: #17141f;
+    color: white;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover, a:focus, a:active{
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.top{
+    background-color: var(--purple);
+    /* width: inherit; */
+    margin: 0;
+    height: 125px;
+    /* letter-spacing: 0.1rem; */
+}
+
+.pageHeader, .footerContent{
+    width: 1440px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+.pageHeader h2{
+    font-size: 48px;
+}
+
+.main{
+    width: 1440px;
+    margin: 0 auto;
+    margin-top: 2%;
+    margin-bottom: 10%;
+}
+
+.linkStuff{
+    margin: 50px 0;
+}
+
+.btnLabel{
+    display: inline-block;
+    vertical-align: baseline;
+    padding-right: 3%;
+}
+
+.twitterLabel{
+    padding-right: 3.8%;
+}
+
+.twitterLink{
+    margin-top: 30px;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+#youtubeBtn{
+    background-color: red;
+    border-color: red;
+}
+
+#youtubeBtn:hover{
+    background-color: rgb(216, 0, 0);
+    border-color: rgb(216, 0, 0);
+}
+
+#youtubeBtn:focus{
+    border-color: rgb(185, 0, 0);
+    outline-color: rgb(185, 0, 0);
+    background-color: rgb(185, 0, 0);
+}
+
+#twitterBtn{
+    background-color: #1da1f2;
+    border-color: #1da1f2;
+}
+
+#twitterBtn:hover{
+    background-color: #1b90d8;
+    border-color: #1b90d8;
+}
+
+#twitterBtn:focus{
+    border-color: #187fc0;
+    outline-color: #187fc0;
+    background-color: #187fc0;
+}
+
+.redditStuff{
+    margin-top: 50px;
+    width: 12%;
+}
+
+#subredditBtn{
+    margin-top: 15px;
+}
+
+.footer{
+    margin: 0;
+    height: 200px;
+    background-color: #6884b4; /* E */
+    /* background-color: #2c3b4e; */ /* M */
+    /* background-color: #2b4e86; */ /* D */
+    /* background-color: #4a78a9; */ /* G in 2nd row pattern */
+    /* background-color: #9bafb6; */ /* O from bottom left corner */
+}
+
+.footerContent{
+    padding-top: 30px;
+}
