@@ -36,8 +36,10 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Technologies
 
+APIs: Twitch, YouTube, Twitter, Reddit
+Languages/Services: HTML, CSS, Bootstrap, JS, jQuery, NodeJS, MySQL, AWS
 
 ## Gifs
 
 ![gif](https://i.imgur.com/cBh3hHg.gif)
-![gif2](https://i.imgur.com/TGQIerE.gif)
+![gif2](https://i.imgur.com/HXkTiXV.gif)
