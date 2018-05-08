@@ -50,7 +50,7 @@ app.get('/', function(req, res, next){
 
         // Make a post request to the twitch api for an access token for that user to get the user's data
         request.post(
-            'https://id.twitch.tv/oauth2/token?client_id=himelq3xvx1icqplgayiw7zh9czhyr&client_secret=ots8plkd9d6qis81yy6oe1kctyb0yl&grant_type=authorization_code&redirect_uri=http://localhost:3000&code=' + req.query.code,
+            'https://id.twitch.tv/oauth2/token?client_id=himelq3xvx1icqplgayiw7zh9czhyr&client_secret=ots8plkd9d6qis81yy6oe1kctyb0yl&grant_type=authorization_code&redirect_uri=https://twitch-social.herokuapp.com/&code=' + req.query.code,
             { json: { key: 'value' } },
             function (error, response, body) {
                 if (!error && response.statusCode == 200) {
