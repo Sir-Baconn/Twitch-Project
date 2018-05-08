@@ -39,5 +39,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Gifs
 
-![](https://i.imgur.com/rYLUWxe.gif)
+![gif](https://i.imgur.com/rYLUWxe.gif)
 <img src="http://i.imgur.com/VvsWegr.gif" width="40" height="40" />
