@@ -40,4 +40,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Gifs
 
 ![gif](https://i.imgur.com/cBh3hHg.gif)
-<img src="http://i.imgur.com/VvsWegr.gif" width="40" height="40" />
+![gif2](https://i.imgur.com/TGQIerE.gif)
