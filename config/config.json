@@ -1,0 +1,21 @@
+{
+    "database": {
+        "host": "twitch-social.c2zrvfpx8fha.us-east-2.rds.amazonaws.com",
+        "user": "ts332",
+        "password": "rutgers332ts",
+        "database": "twitch_social"
+    },
+    "youtube": {
+        "client_id": "411664091291-a4gf7p2p4sdi6cgn99944fitsiko6bve.apps.googleusercontent.com",
+        "client_secret": "HFv8xqDa7CENmEb74p69nBpq",
+        "redirect_url": "http://localhost:3000/link_stuff",
+        "api_key": "AIzaSyAOYaItHH7DOc5Fu58oQ86JMHzi-xD7XMo"
+    },
+    "reddit": {
+        "userAgent": "ts332",
+        "clientId": "4mu5-wYni8CNvw",
+        "clientSecret": "-G5Y4cVRMTWUWpmJE5GHDqyHkkk",
+        "username": "Sir-Baconnn",
+        "password": "rutgers332ts"
+    }
+}
