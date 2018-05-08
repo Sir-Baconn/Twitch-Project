@@ -39,4 +39,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Gifs
 
-![](http://i.imgur.com/VvsWegr.gif)
+![gif](http://i.imgur.com/VvsWegr.gif)
