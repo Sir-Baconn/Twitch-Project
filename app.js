@@ -188,7 +188,7 @@ app.post('/streamers', function(req, res, next){
         req.session.username = req.body.username;
 
         // After storing the new user in the DB, redirect him to the oauth thing to link twitch account using twitch credentials
-        res.redirect('https://id.twitch.tv/oauth2/authorize?client_id=himelq3xvx1icqplgayiw7zh9czhyr&redirect_uri=http://localhost:3000&response_type=code&scope=user:edit');
+        res.redirect('https://id.twitch.tv/oauth2/authorize?client_id=himelq3xvx1icqplgayiw7zh9czhyr&redirect_uri=https://twitch-social.herokuapp.com/&response_type=code&scope=user:edit');
     }
 
     // req.body holds what was submitted in the form in json format, in this case it'll be a username and password (see landing.ejs) i.e. use req.body.username for the username
