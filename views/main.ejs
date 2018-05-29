@@ -16,7 +16,7 @@
 <body>
     <div class="top">
         <div class="pageHeader">
-            <h2 style="display: inline-block"><a href="streamers">Twitch Social</a></h2>
+            <h2 style="display: inline-block"><a href="/streamers">Twitch Social</a></h2>
         </div>
     </div>
     <div class="main">
@@ -26,24 +26,28 @@
                 <h6><%=twitchDisplayName%></h6>
             </div>
         </div>
-        <div class="grid-container2">
-            <div id="twitchIcon" class="grid-item"><a href="https://www.twitch.tv/<%=twitchName%>" target="_blank"><i class="fab fa-twitch fti"></i></a></div>
-            <div class="grid-item"><iframe src="<%=clips[0]%>&autoplay=false" height="320" width="540" frameborder="0" scrolling="false" allowfullscreen="true"></iframe></div>
-            <div class="grid-item"><iframe src="<%=clips[1]%>&autoplay=false" height="320" width="540" frameborder="0" scrolling="false" allowfullscreen="true"></iframe></div>
-            <div class="grid-item"><iframe src="<%=clips[2]%>&autoplay=false" height="320" width="540" frameborder="0" scrolling="false" allowfullscreen="true"></iframe></div>
-            <div id="youtubeIcon" class="grid-item"><a href="https://www.youtube.com/channel/<%=youtubeID%>" target="_blank"><i class="fab fa-youtube fti"></i></a></div>
-            <div class="grid-item"><iframe id="ytplayer" type="text/html" width="540" height="320" src="https://www.youtube.com/embed/<%=ytvideos[0]%>?origin=http://localhost:3000/link_stuff" frameborder="0" allowfullscreen></iframe></div>
-            <div class="grid-item"><iframe id="ytplayer" type="text/html" width="540" height="320" src="https://www.youtube.com/embed/<%=ytvideos[1]%>?origin=http://localhost:3000/link_stuff" frameborder="0" allowfullscreen></iframe></div>
-            <div class="grid-item"><iframe id="ytplayer" type="text/html" width="540" height="320" src="https://www.youtube.com/embed/<%=ytvideos[2]%>?origin=http://localhost:3000/link_stuff" frameborder="0" allowfullscreen></iframe></div>
-            <div id="twitterIcon" class="grid-item"><a href="https://twitter.com/<%=handle%>" target="_blank"><i class="fab fa-twitter fti"></i></a></div>
-            <div class="grid-item"><%- tweetHTMLs[0] %></div>
-            <div class="grid-item"><%- tweetHTMLs[1] %></div>
-            <div class="grid-item"><%- tweetHTMLs[2] %></div>
-            <div id="redditIcon" class="grid-item"><a href="https://www.reddit.com/r/<%=subreddit%>" target="_blank"><i class="fab fa-reddit fti"></i></a></div>
-            <div class="grid-item redditItem"><a href="https://www.reddit.com<%= redditPosts[0].permalink %>" target="_blank">View post</a></div>
-            <div class="grid-item redditItem"><a href="https://www.reddit.com<%= redditPosts[1].permalink %>" target="_blank">View post</a></div>
-            <div class="grid-item redditItem"><a href="https://www.reddit.com<%= redditPosts[2].permalink %>" target="_blank">View post</a></div>
-        </div>
+        <% if(youtubeID) {%>
+            <div class="grid-container2">
+                <div id="twitchIcon" class="grid-item"><a href="https://www.twitch.tv/<%=twitchName%>" target="_blank"><i class="fab fa-twitch fti"></i></a></div>
+                <div class="grid-item"><iframe src="<%=clips[0]%>&autoplay=false" height="320" width="540" frameborder="0" scrolling="false" allowfullscreen="true"></iframe></div>
+                <div class="grid-item"><iframe src="<%=clips[1]%>&autoplay=false" height="320" width="540" frameborder="0" scrolling="false" allowfullscreen="true"></iframe></div>
+                <div class="grid-item"><iframe src="<%=clips[2]%>&autoplay=false" height="320" width="540" frameborder="0" scrolling="false" allowfullscreen="true"></iframe></div>
+                <div id="youtubeIcon" class="grid-item"><a href="https://www.youtube.com/channel/<%=youtubeID%>" target="_blank"><i class="fab fa-youtube fti"></i></a></div>
+                <div class="grid-item"><iframe id="ytplayer" type="text/html" width="540" height="320" src="https://www.youtube.com/embed/<%=ytvideos[0]%>?origin=http://localhost:3000/link_stuff" frameborder="0" allowfullscreen></iframe></div>
+                <div class="grid-item"><iframe id="ytplayer" type="text/html" width="540" height="320" src="https://www.youtube.com/embed/<%=ytvideos[1]%>?origin=http://localhost:3000/link_stuff" frameborder="0" allowfullscreen></iframe></div>
+                <div class="grid-item"><iframe id="ytplayer" type="text/html" width="540" height="320" src="https://www.youtube.com/embed/<%=ytvideos[2]%>?origin=http://localhost:3000/link_stuff" frameborder="0" allowfullscreen></iframe></div>
+                <div id="twitterIcon" class="grid-item"><a href="https://twitter.com/<%=handle%>" target="_blank"><i class="fab fa-twitter fti"></i></a></div>
+                <div class="grid-item"><%- tweetHTMLs[0] %></div>
+                <div class="grid-item"><%- tweetHTMLs[1] %></div>
+                <div class="grid-item"><%- tweetHTMLs[2] %></div>
+                <div id="redditIcon" class="grid-item"><a href="https://www.reddit.com/r/<%=subreddit%>" target="_blank"><i class="fab fa-reddit fti"></i></a></div>
+                <div class="grid-item redditItem"><a href="https://www.reddit.com<%= redditPosts[0].permalink %>" target="_blank">View post</a></div>
+                <div class="grid-item redditItem"><a href="https://www.reddit.com<%= redditPosts[1].permalink %>" target="_blank">View post</a></div>
+                <div class="grid-item redditItem"><a href="https://www.reddit.com<%= redditPosts[2].permalink %>" target="_blank">View post</a></div>
+            </div>
+        <% }else{ %>
+            <div class="grid-replacement">There is currently no data for this streamer. Please follow and view one of the following streamers: timthetatman, ninja, pokimane, or loltyler1.</div>
+        <% } %>
     </div>
     <div class="footer">
         <div class="footerContent">

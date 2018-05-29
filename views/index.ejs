@@ -38,12 +38,12 @@
             <% for(var i = 0; i < followers.length; i++){ %>
                 <div class="item">
                     <!--<a href="https://www.twitch.tv/<%= followers[i].login %>" target="_blank"><img src="<%= followers[i].profile_image_url %>" alt=""></a>-->
-                    <form class="form" method="POST" action="home"><img src="<%= followers[i].profile_image_url %>" alt=""><input style="display: none;" type="text" id="username" name="username" value="<%= followers[i].display_name %>"></form>
+                    <form class="form" method="POST" action="/streamers/<%= followers[i].login %>"><img src="<%= followers[i].profile_image_url %>" alt=""><input style="display: none;" type="text" id="username" name="username" value="<%= followers[i].display_name %>"></form>
                     <div class="streamerInfo">
                         <% if(followers[i].stream_status){ %>
                             <i class="fas fa-circle" title="Live!"></i>
                         <% } %>
-                        <h6><%= followers[i].display_name %></h6>
+                        <h6 title="<%= followers[i].display_name %>"><%= followers[i].display_name %></h6>
                     </div>
                 </div>
             <% } %>

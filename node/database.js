@@ -106,9 +106,10 @@ function getUserAccessToken(username, callback){
 function getYoutubeChannelID(username, callback){
     var query = "SELECT channel_id FROM twitch_social.youtube_info WHERE username = ?";
     db.query(query, username, function(err, result){
-        if(err) throw err;
+        if(err) return callback(-1);
+        if(!result[0]) return callback(-1);
         return callback(result[0].channel_id);
-    })
+    });
 }
 
 function getTwitterHandle(username, callback){

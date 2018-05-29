@@ -2,8 +2,8 @@ var axios = require('axios');
 var { URLSearchParams } = require('url');
 
 // Twitch API client id
-const CLIENT_ID = 'himelq3xvx1icqplgayiw7zh9czhyr';
-const CLIENT_SECRET = 'ots8plkd9d6qis81yy6oe1kctyb0yl';
+const CLIENT_ID = 'jjkfx0rdgvk3ddm2y2fd4doq5m1mba';
+const CLIENT_SECRET = '73c55kpq9xvtiy4qdi4mgrg5qtnbna';
 
 function getUserFollowersID(token){
     return getUserID(token).then(function(user_id){
@@ -42,7 +42,7 @@ function getUserIDFromUsername(login){
     return axios
         .get('https://api.twitch.tv/helix/users', {
             headers: {
-                'Client-ID': 'himelq3xvx1icqplgayiw7zh9czhyr'
+                'Client-ID': 'jjkfx0rdgvk3ddm2y2fd4doq5m1mba'
             },
             params: {
                 login: login

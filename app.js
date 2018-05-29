@@ -6,7 +6,6 @@ var app = express();
 var session = require('express-session');               //Unused right now, don't worry about it
 // var cors = require('cors');
 
-var request = require('request');                       // These next 2 are for making api requests, USE AXIOS NOT REQUEST
 var axios = require('axios');
 var util = require('util');
 
@@ -47,38 +46,40 @@ app.get('/', function(req, res, next){
     // After signing up and linking your twitch, look at the url and you will see a 'code' in the url.
     // This code is a code for the given user in order to access that user's data on twitch's side.
     if(req.query.code){
-
         // Make a post request to the twitch api for an access token for that user to get the user's data
-        request.post(
-            'https://id.twitch.tv/oauth2/token?client_id=himelq3xvx1icqplgayiw7zh9czhyr&client_secret=ots8plkd9d6qis81yy6oe1kctyb0yl&grant_type=authorization_code&redirect_uri=https://twitch-social.herokuapp.com/&code=' + req.query.code,
-            { json: { key: 'value' } },
-            function (error, response, body) {
-                if (!error && response.statusCode == 200) {
-                    // console.log('body: ' + JSON.stringify(body));
-                    // If we were successful, get that user's followers and also live followers, then load the home page (index.ejs) while sending the followers
-                    // to that ejs file where it will be used to display the followers in a certain way.
-                    database.insertUserTwitchTokens(req.session.username, body.access_token, body.refresh_token, function(result){
-                        twitchRequests.getUserFollowersID(body.access_token).then(function(followers){
-                            twitchRequests.getLiveFollowers(followers).then(function(stuff){
-                                for(let i = 0; i < followers.length; i++){
-                                    if(stuff.includes(followers[i].id)){
-                                        followers[i].stream_status = 'live';
-                                    }
-                                }
-                                res.render('index', {
-                                    followers: followers
-                                });
-                            });
-                        });
+        return axios
+        .post('https://id.twitch.tv/oauth2/token?client_id=jjkfx0rdgvk3ddm2y2fd4doq5m1mba&client_secret=73c55kpq9xvtiy4qdi4mgrg5qtnbna&grant_type=authorization_code&redirect_uri=https://twitch-social.herokuapp.com/&code=' + req.query.code)
+        .then(response => {
+            console.log(response.data);
+            database.insertUserTwitchTokens(req.session.username, response.data.access_token, response.data.refresh_token, function(result){
+                twitchRequests.getUserFollowersID(response.data.access_token).then(function(followers){
+                    twitchRequests.getLiveFollowers(followers).then(function(stuff){
+                        for(let i = 0; i < followers.length; i++){
+                            if(stuff.includes(followers[i].id)){
+                                followers[i].stream_status = 'live';
+                            }
+                        }
+                        // res.render('index', {
+                        //     followers: followers
+                        // });
+                        res.redirect('/streamers');
                     });
-                }
+                });
+            });
+        })
+        .catch(error => {
+            console.log('<app GET /: getting tokens>' + error);
+            if(error.response.status == 400){
+                console.log('error401');
             }
-        );
+        });
+    }else if(req.session.username){
+        res.redirect('/streamers');
     }else{
         // This happens when you first go to the page and do nothing, we just load the landing.ejs file
         // console.log('hello');
         res.render('landing');
-        // res.redirect('https://id.twitch.tv/oauth2/authorize?client_id=himelq3xvx1icqplgayiw7zh9czhyr&redirect_uri=http://localhost:3000&response_type=code&scope=user:edit');
+        // res.redirect('https://id.twitch.tv/oauth2/authorize?client_id=jjkfx0rdgvk3ddm2y2fd4doq5m1mba&redirect_uri=https://twitch-social.herokuapp.com/&response_type=code&scope=user:edit');
     }
     // res.render('landing');
 });
@@ -187,8 +188,11 @@ app.post('/streamers', function(req, res, next){
         authenticator.storeUser(req.body.username, req.body.password);
         req.session.username = req.body.username;
 
+        console.log('running');
+
+
         // After storing the new user in the DB, redirect him to the oauth thing to link twitch account using twitch credentials
-        res.redirect('https://id.twitch.tv/oauth2/authorize?client_id=himelq3xvx1icqplgayiw7zh9czhyr&redirect_uri=https://twitch-social.herokuapp.com/&response_type=code&scope=user:edit');
+        res.redirect('https://id.twitch.tv/oauth2/authorize?client_id=jjkfx0rdgvk3ddm2y2fd4doq5m1mba&redirect_uri=https://twitch-social.herokuapp.com/&response_type=code&scope=user:edit');
     }
 
     // req.body holds what was submitted in the form in json format, in this case it'll be a username and password (see landing.ejs) i.e. use req.body.username for the username
@@ -200,7 +204,7 @@ app.post('/streamers', function(req, res, next){
 // GET /scheduler
 // This code runs when you go to /scheduler or are redirected to /scheduler
 app.get('/scheduler', function(req, res, next){
-    // res.redirect('https://id.twitch.tv/oauth2/authorize?client_id=himelq3xvx1icqplgayiw7zh9czhyr&redirect_uri=http://localhost:3000&response_type=code&scope=user:edit');
+    // res.redirect('https://id.twitch.tv/oauth2/authorize?client_id=jjkfx0rdgvk3ddm2y2fd4doq5m1mba&redirect_uri=https://twitch-social.herokuapp.com/&response_type=code&scope=user:edit');
     res.render('scheduler');
 })
 
@@ -243,51 +247,68 @@ app.get('/link_stuff/twitter', function(req, res, next){
 
 });
 
-app.post('/home', function(req, res, next){
+app.post('/streamers/:streamer', function(req, res, next){
     if(req.body.username){
         database.getYoutubeChannelID(req.body.username, function(channelID){
-            youtubeRequests.getChannelVideos(channelID).then(function(vids){
-                var videos = [];
-                for (let i = 0; i < 3; i++) {
-                    videos.push(vids.items[i].id.videoId);
-                }
-                twitchRequests.getUserIDFromUsername(req.body.username).then(function(twitchInfo){
-                    // console.log(twitchID);
-                    var clips = [];
-                    twitchRequests.getTwitchClips(twitchInfo.id).then(function(rawClips){
-                        // console.log(rawClips);
-                        for(let i = 0; i < 3; i++){
-                            clips.push(rawClips[i].embed_url);
-                        }
-                        
-                        database.getTwitterHandle(req.body.username, function(handle){
-                            twitterRequests.createTwitterClient();
-                            twitterRequests.getTweetsByUser(handle, 10, true, false, function(tweetURLs){
-                                twitterRequests.getEmbedTweets(tweetURLs, 400, false, function(tweetEmbeds){
-                                    redditRequests.createRedditClient();
-                                    database.getSubreddit(req.body.username, function(subreddit){
-                                        redditRequests.getSubredditPosts(subreddit, 3).then(function(posts){
-                                            res.render('main', {
-                                                twitchName: twitchInfo.login,
-                                                twitchDisplayName: twitchInfo.display_name,
-                                                twitchImage: twitchInfo.profile_image_url,
-                                                youtubeID: channelID,
-                                                ytvideos: videos,
-                                                clips: clips,
-                                                handle: handle,
-                                                tweetHTMLs: tweetEmbeds,
-                                                subreddit: subreddit,
-                                                redditPosts: posts
+            if(channelID != -1){
+                youtubeRequests.getChannelVideos(channelID).then(function(vids){
+                    var videos = [];
+                    for (let i = 0; i < 3; i++) {
+                        videos.push(vids.items[i].id.videoId);
+                    }
+                    twitchRequests.getUserIDFromUsername(req.body.username).then(function(twitchInfo){
+                        // console.log(twitchID);
+                        var clips = [];
+                        twitchRequests.getTwitchClips(twitchInfo.id).then(function(rawClips){
+                            // console.log(rawClips);
+                            for(let i = 0; i < 3; i++){
+                                clips.push(rawClips[i].embed_url);
+                            }
+                            
+                            database.getTwitterHandle(req.body.username, function(handle){
+                                twitterRequests.createTwitterClient();
+                                twitterRequests.getTweetsByUser(handle, 10, true, false, function(tweetURLs){
+                                    twitterRequests.getEmbedTweets(tweetURLs, 400, false, function(tweetEmbeds){
+                                        redditRequests.createRedditClient();
+                                        database.getSubreddit(req.body.username, function(subreddit){
+                                            redditRequests.getSubredditPosts(subreddit, 3).then(function(posts){
+                                                res.render('main', {
+                                                    twitchName: twitchInfo.login,
+                                                    twitchDisplayName: twitchInfo.display_name,
+                                                    twitchImage: twitchInfo.profile_image_url,
+                                                    youtubeID: channelID,
+                                                    ytvideos: videos,
+                                                    clips: clips,
+                                                    handle: handle,
+                                                    tweetHTMLs: tweetEmbeds,
+                                                    subreddit: subreddit,
+                                                    redditPosts: posts
+                                                });
                                             });
                                         });
                                     });
                                 });
                             });
+    
                         });
-
                     });
                 });
-            });
+            }else{
+                twitchRequests.getUserIDFromUsername(req.body.username).then(function(twitchInfo){
+                    res.render('main', {
+                        twitchName: twitchInfo.login,
+                        twitchDisplayName: twitchInfo.display_name,
+                        twitchImage: twitchInfo.profile_image_url,
+                        youtubeID: null,
+                        ytvideos: null,
+                        clips: null,
+                        handle: null,
+                        tweetHTMLs: null,
+                        subreddit: null,
+                        redditPosts: null
+                    });
+                });
+            }
         });
     }else{
         // console.log('wat');

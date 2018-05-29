@@ -103,6 +103,13 @@ a:hover, a:focus, a:active{
   vertical-align:center;
 }
 
+.grid-replacement{
+    width: 1440px;
+    margin: 0 auto;
+    margin-top: 5%;
+    margin-bottom: 12%;
+}
+
 .MediaCard-media{
     width: 25% !important;
     margin: auto !important;
