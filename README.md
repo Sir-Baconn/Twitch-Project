@@ -14,8 +14,11 @@ Without going through the hassle of following them, scroll down to see gifs of a
 ## Current Features
 
 Linking Twitch and YouTube accounts
+
 Show if streamer is currently live
+
 Viewing streamers' social media (YT, Twitter, Clips)
+
 Ability to easily go directly to the streamers' social media pages
 
 #### Search specific streamers
@@ -38,7 +41,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 APIs: Twitch, YouTube, Twitter, Reddit
 
-Languages/Services: HTML, CSS, Bootstrap, JS, jQuery, NodeJS, MySQL, AWS
+Languages/Services: HTML, ejs, CSS, Bootstrap, JS, jQuery, Node.js, MySQL, AWS, Heroku, OAuth
 
 ## Gifs
 
